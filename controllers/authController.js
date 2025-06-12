@@ -1,9 +1,4 @@
-const usersDB = {
-  users: require("../model/users.json"),
-  setUsers: function (data) {
-    this.users = data;
-  },
-};
+const User = require("../model/User");
 
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
@@ -19,7 +14,7 @@ const handleLogin = async (req, res) => {
       .status(400)
       .json({ "message": "Username and Password required" });
   }
-  const foundUser = usersDB.users.find((person) => person.username === user);
+  const foundUser = await User.findOne({ username: user }).exec();
   if (!foundUser)
     return res.sendStatus(401).json({ "message": "unauthorized" });
 
