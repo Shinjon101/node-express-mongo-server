@@ -8,21 +8,21 @@ const getAllEmployees = (req, res) => {
   res.json(data.employess);
 };
 
-const createNewEmployees = (req, res) => {
+const createNewEmployee = (req, res) => {
   res.json({
     "firstname": req.body.firstname,
     "lastname": req.body.lastname,
   });
 };
 
-const updateEmployees = (req, res) => {
+const updateEmployee = (req, res) => {
   res.json({
     "firstname": req.body.firstname,
     "lastname": req.body.lastname,
   });
 };
 
-const deleteEmployees = (req, res) => {
+const deleteEmployee = (req, res) => {
   res.json({ id: req.body.id });
 };
 
@@ -32,8 +32,8 @@ const getEmployee = (req, res) => {
 
 module.exports = {
   getAllEmployees,
-  createNewEmployees,
-  updateEmployees,
-  deleteEmployees,
+  createNewEmployee,
+  updateEmployee,
+  deleteEmployee,
   getEmployee,
 };
