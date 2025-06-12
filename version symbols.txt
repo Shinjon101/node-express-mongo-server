@@ -1,0 +1,23 @@
+
+
+eg:
+ 8.2.3
+
+ 8 is major update num
+ 2 is minor update num
+ 3 is patch
+
+^  means update only patches and minor NOT major
+  eg: ^8.2.3
+
+~ means pathces only
+  eg: ~8.2.3
+
+* means update everthing.
+
+eg:
+"dependencies":{
+  "uuid": "*"
+}
+
+no symbol means version stays FIXED
