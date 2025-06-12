@@ -4,10 +4,15 @@ const corsConfig = require("./config/corsConfig");
 const cors = require("cors");
 const path = require("path");
 const { logger } = require("./middleware/logEvents");
+const mongoose = require("mongoose");
+const connectDB = require("./config/dbCon");
 const errorHandler = require("./middleware/errorHandler");
 const verifyJWT = require("./middleware/verifyJWT");
 const cookieParser = require("cookie-parser");
 const PORT = process.env.PORT || 3500;
+
+//connect to mongoDB
+connectDB();
 
 app.use(logger);
 app.use(cors(corsConfig));
@@ -44,4 +49,7 @@ app.all("/^.*$/", (req, res) => {
 
 app.use(errorHandler);
 
-app.listen(PORT, () => console.log(`server running on port ${PORT}`));
+mongoose.connection.once("open", () => {
+  console.log("connected to mongoDB");
+  app.listen(PORT, () => console.log(`server running on port ${PORT}`));
+});
